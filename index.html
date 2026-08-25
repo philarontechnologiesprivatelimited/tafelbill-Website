@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant &amp; Cafe Billing Software with KOT | TafelBill</title>
+<meta name="description" content="Billing and POS software for restaurants, cafes and cloud kitchens. Table billing, KOT to kitchen, split bills, GST reports. Works offline. 3 months free.">
+<link rel="canonical" href="https://tafelbill.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="TafelBill">
+<meta name="keywords" content="restaurant billing software, cafe billing software, restaurant POS, cafe POS, KOT software, kitchen order ticket, billing software for restaurants India, GST billing restaurant, cloud kitchen POS, bakery billing software, food business billing, table billing app, offline POS">
+
+<meta property="og:site_name" content="TafelBill">
+<meta property="og:title" content="TafelBill — Restaurant &amp; Cafe Billing Software with KOT">
+<meta property="og:description" content="Table billing, KOT to the kitchen, split bills and GST-ready reports for restaurants and cafes. Runs in a browser and keeps billing when the internet drops. 3 months free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tafelbill.com/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://tafelbill.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TafelBill — billing for cafes and restaurants">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TafelBill — Restaurant &amp; Cafe Billing Software with KOT">
+<meta name="twitter:description" content="Table billing, KOT to the kitchen, split bills and GST-ready reports. Works offline. 3 months free.">
+<meta name="twitter:image" content="https://tafelbill.com/og-image.png">
+
+<link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<meta name="theme-color" content="#B4713C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171412; --ink-2:#4A423C; --muted:#7C716A;
+  --cream:#FDFAF5; --card:#FFFFFF; --line:#E9E0D6;
+  --accent:#B4713C; --accent-dark:#8E5729; --accent-soft:#F6EADD;
+  --slate:#2B3038;
+  --radius:14px;
+  --wrap:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--ink); background:var(--cream); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif; line-height:1.12; letter-spacing:-.015em; font-weight:600}
+a{color:inherit}
+img,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
+.eyebrow{
+  font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent-dark);
+}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; border:1px solid transparent;
+  padding:13px 22px; border-radius:999px; font-weight:600; font-size:15px;
+  text-decoration:none; cursor:pointer; transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn-primary{background:var(--accent); color:#fff; box-shadow:0 6px 18px rgba(180,113,60,.28)}
+.btn-primary:hover{background:var(--accent-dark); transform:translateY(-1px)}
+.btn-ghost{background:transparent; border-color:var(--line); color:var(--ink)}
+.btn-ghost:hover{background:#fff; border-color:#D6C8B8}
+
+/* nav */
+header.nav{position:sticky; top:0; z-index:50; background:rgba(253,250,245,.88); backdrop-filter:blur(10px); border-bottom:1px solid transparent; transition:border-color .2s}
+header.nav.stuck{border-bottom-color:var(--line)}
+.nav-in{display:flex; align-items:center; gap:28px; height:70px}
+.logo{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:700; font-size:20px; text-decoration:none; letter-spacing:-.02em}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--slate);display:grid;place-items:center;flex-shrink:0}
+.nav-links{display:flex; gap:26px; margin-left:auto; font-size:14.5px; font-weight:500}
+.nav-links a{text-decoration:none; color:var(--ink-2)}
+.nav-links a:hover{color:var(--accent-dark)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:17px;cursor:pointer}
+
+/* hero */
+.hero{padding:76px 0 64px}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
+.hero h1{font-size:clamp(38px,5vw,60px); margin:16px 0 20px}
+.hero p.lead{font-size:18.5px; color:var(--ink-2); max-width:33ch}
+.hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+.hero-note{margin-top:18px; font-size:13.5px; color:var(--muted)}
+
+.mock{background:var(--slate); border-radius:20px; padding:12px; box-shadow:0 26px 60px rgba(23,20,18,.22)}
+.mock-bar{display:flex; gap:6px; padding:5px 6px 11px}
+.mock-bar i{width:9px;height:9px;border-radius:50%;background:#5A6472;display:block}
+.mock-screen{background:#F4F5F7; border-radius:12px; overflow:hidden}
+.m-top{background:#4B5563;color:#fff;padding:10px 14px;display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600}
+.m-badge{margin-left:auto;background:rgba(255,255,255,.16);padding:2px 9px;border-radius:10px;font-size:10.5px;letter-spacing:.04em}
+.m-body{padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.m-tile{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:11px 12px}
+.m-tile .t{font-size:11px;color:#6B7280;font-weight:600}
+.m-tile .v{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin-top:3px}
+.m-tile.free{border-color:#BBF7D0;background:#F0FDF4}
+.m-tile.busy{border-color:#FED7AA;background:#FFF7ED}
+.m-strip{grid-column:1/-1;background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:11px 12px;display:flex;align-items:center;gap:10px;font-size:12px}
+.m-dot{width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0}
+.m-strip b{margin-left:auto;font-family:'Fraunces',serif;font-size:15px}
+
+/* strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line); background:#fff}
+.strip-in{display:flex; flex-wrap:wrap; gap:14px 44px; justify-content:center; padding:22px 0; font-size:14px; color:var(--ink-2); font-weight:500}
+.strip-in span{display:flex; align-items:center; gap:9px}
+.tick{color:var(--accent); font-weight:700}
+
+/* sections */
+section{padding:86px 0}
+.sec-head{max-width:640px; margin-bottom:46px}
+.sec-head h2{font-size:clamp(29px,3.6vw,40px); margin:14px 0 14px}
+.sec-head p{font-size:17px; color:var(--ink-2)}
+.center{margin-left:auto;margin-right:auto; text-align:center}
+
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; transition:transform .18s ease, box-shadow .18s ease}
+.card:hover{transform:translateY(-3px); box-shadow:0 14px 34px rgba(23,20,18,.07)}
+.card .ico{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;font-size:20px;margin-bottom:16px}
+.card h3{font-size:19px; margin-bottom:9px}
+.card p{font-size:14.8px; color:var(--ink-2)}
+
+/* kitchen feature */
+.feature{background:var(--slate); color:#fff; border-radius:22px; padding:56px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+.feature h2{font-size:clamp(27px,3.2vw,36px); margin:14px 0 16px; color:#fff}
+.feature p{color:#C9D0D9; font-size:16.5px}
+.feature .eyebrow{color:#E0B285}
+.feature ul{list-style:none; margin-top:22px; display:grid; gap:11px}
+.feature li{display:flex; gap:11px; font-size:15px; color:#DFE4EA}
+.feature li::before{content:'\2192'; color:#E0B285; font-weight:700}
+.kot{background:#F4F5F7; border-radius:14px; padding:16px; color:var(--ink)}
+.kot-hd{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;margin-bottom:11px}
+.kot-hd .pill{margin-left:auto;background:#DC2626;color:#fff;font-size:10.5px;padding:2px 9px;border-radius:9px}
+.kot-item{background:#fff;border:1px solid #E5E7EB;border-left:3px solid #D97706;border-radius:9px;padding:10px 12px;margin-bottom:8px}
+.kot-item.done{border-left-color:#16A34A;opacity:.62}
+.kot-item .r1{display:flex;font-size:12.5px;font-weight:700}
+.kot-item .r1 span{margin-left:auto;color:#6B7280;font-weight:600}
+.kot-item .r2{font-size:12px;color:#4B5563;margin-top:4px}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; counter-reset:s}
+.step{counter-increment:s; position:relative; padding-top:16px}
+.step::before{content:counter(s); font-family:'Fraunces',serif; font-size:46px; font-weight:700; color:var(--accent); opacity:.26; line-height:1}
+.step h3{font-size:19px; margin:8px 0 8px}
+.step p{color:var(--ink-2); font-size:14.8px}
+
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px}
+.role{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.role b{display:block;font-size:14.5px;margin-bottom:5px}
+.role span{font-size:13.5px;color:var(--muted)}
+
+/* pricing */
+.price-wrap{background:#fff;border:1px solid var(--line);border-radius:20px;padding:44px;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.price-wrap h2{font-size:clamp(26px,3vw,34px);margin:12px 0 14px}
+.price-wrap p{color:var(--ink-2);font-size:16.5px}
+.price-tag{display:flex;align-items:baseline;gap:12px;margin:22px 0 8px;flex-wrap:wrap}
+.price-tag .was{font-size:22px;color:var(--muted);text-decoration:line-through;font-family:'Fraunces',serif}
+.price-tag .now{font-family:'Fraunces',serif;font-size:52px;font-weight:700;line-height:1;color:var(--ink)}
+.price-tag .per{font-size:15px;color:var(--muted);font-weight:600;line-height:1.25}
+.price-tag .per small{font-size:13px;font-weight:500}
+.price-note{font-size:14.5px;color:var(--accent-dark) !important;background:var(--accent-soft);display:inline-block;padding:7px 13px;border-radius:9px}
+.incl li b{color:var(--ink)}
+.incl{list-style:none;display:grid;gap:10px}
+.incl li{display:flex;gap:10px;font-size:15px;color:var(--ink-2)}
+.incl li::before{content:'\2713';color:var(--accent);font-weight:700}
+
+/* faq */
+.faq{max-width:760px;margin-left:auto;margin-right:auto}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{font-weight:600;font-size:16.5px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';margin-left:auto;color:var(--accent);font-size:22px;font-weight:400;line-height:1}
+details[open] summary::after{content:'\2013'}
+details p{margin-top:11px;color:var(--ink-2);font-size:15.3px;max-width:66ch}
+
+/* cta */
+.cta{background:var(--accent-soft);border-radius:22px;padding:60px 44px;text-align:center}
+.cta h2{font-size:clamp(28px,3.4vw,38px);margin-bottom:14px}
+.cta p{color:var(--ink-2);font-size:17px;max-width:52ch;margin:0 auto 28px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:44px 0 34px;margin-top:20px}
+.foot{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.foot-links{display:flex;gap:22px;margin-left:auto;font-size:14px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);text-decoration:none}
+.foot-links a:hover{color:var(--accent-dark)}
+.foot-note{width:100%;color:var(--muted);font-size:13px;margin-top:8px}
+
+@media (max-width:960px){
+  .hero-grid,.feature,.price-wrap{grid-template-columns:1fr;gap:36px}
+  .cards,.steps{grid-template-columns:1fr 1fr}
+  .feature{padding:38px}
+  section{padding:64px 0}
+}
+@media (max-width:680px){
+  .nav-links,.nav-cta{display:none}
+  .nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:18px 24px;gap:16px}
+  .nav-toggle{display:block}
+  .cards,.steps{grid-template-columns:1fr}
+  .hero{padding:48px 0 44px}
+  .price-wrap,.cta{padding:32px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <span class="logo-mark">
+        <svg width="17" height="17" viewBox="0 0 120 128" aria-hidden="true">
+          <path d="M30 36 h60 l-6 58 a11 11 0 0 1 -11 10 h-26 a11 11 0 0 1 -11 -10 z" fill="#B4713C"/>
+          <path d="M30 36 h60 l-1.6 15 h-56.8 z" fill="#fff"/>
+          <path d="M90 48 h7 a13 13 0 0 1 0 26 h-4" fill="none" stroke="#fff" stroke-width="7"/>
+        </svg>
+      </span>
+      TafelBill
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#kitchen">Kitchen</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://app.tafelbill.com">Sign in</a>
+      <a class="btn btn-primary" href="#contact">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Billing for cafes &amp; restaurants</p>
+      <h1>Billing that keeps every table moving.</h1>
+      <p class="lead">Take the order, fire it to the kitchen, split the bill, settle the due — on the devices your staff already carry.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start 3 months free</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">Runs in a browser. Nothing to install. Keeps billing when the internet drops.</p>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="mock-bar"><i></i><i></i><i></i></div>
+      <div class="mock-screen">
+        <div class="m-top">&#9749; TafelBill <span class="m-badge">MASTER</span></div>
+        <div class="m-body">
+          <div class="m-tile busy"><div class="t">Table 4 &middot; Dine-in</div><div class="v">&#8377; 1,240</div></div>
+          <div class="m-tile free"><div class="t">Table 5</div><div class="v">Free</div></div>
+          <div class="m-tile busy"><div class="t">Table 7 &middot; Split</div><div class="v">&#8377; 860</div></div>
+          <div class="m-tile"><div class="t">Takeaway #22</div><div class="v">&#8377; 310</div></div>
+          <div class="m-strip"><span class="m-dot"></span> Synced &middot; 3 KOTs in kitchen <b>&#8377; 18,430 today</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip-in">
+    <span><b class="tick">&#10003;</b> 3 months free</span>
+    <span><b class="tick">&#10003;</b> Works offline</span>
+    <span><b class="tick">&#10003;</b> Kitchen display &amp; KOT printing</span>
+    <span><b class="tick">&#10003;</b> Multi-outlet</span>
+    <span><b class="tick">&#10003;</b> UPI, cash &amp; split payments</span>
+    <span><b class="tick">&#10003;</b> English &amp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</span>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">What you get</p>
+      <h2>Everything the floor needs, nothing it doesn't.</h2>
+      <p>Built with cafe owners, for the hour when every table turns at once.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">&#127869;</div>
+        <h3>Tables &amp; sections</h3>
+        <p>Lay out floors and sections, split a table across two bills, merge them back. Dine-in, takeaway and delivery in one screen.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128221;</div>
+        <h3>A menu that fits reality</h3>
+        <p>Categories, variants and add-ons, per-item stock with low-stock warnings, and CSV import for when you're setting up or changing the card.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128179;</div>
+        <h3>Payments, however they pay</h3>
+        <p>Cash, UPI, cards, or split across several. Pay-later tabs and customer dues tracked until they're settled.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128101;</div>
+        <h3>Staff with the right access</h3>
+        <p>Owners, managers, cashiers, waiters and chefs each see only their part. Every bill is stamped with who billed it.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128202;</div>
+        <h3>Numbers you'll actually read</h3>
+        <p>Daily sales, payment-method breakdown, top sellers and date-range reports — with a PIN gate on editing or deleting a bill.</p>
+      </div>
+      <div class="card">
+        <div class="ico">&#128424;</div>
+        <h3>Prints on what you own</h3>
+        <p>58mm or 80mm bill printers, separate KOT printing per kitchen. No proprietary hardware to buy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kitchen" style="padding-top:0">
+  <div class="wrap">
+    <div class="feature">
+      <div>
+        <p class="eyebrow">Kitchen</p>
+        <h2>The kitchen knows before the waiter walks over.</h2>
+        <p>Orders reach the right kitchen the moment they're saved. Chefs get their own screen and their own login — no bills, no reports, just what to cook next.</p>
+        <ul>
+          <li>Route items to the kitchen that cooks them</li>
+          <li>Chef screen with sound and phone notifications for new orders</li>
+          <li>Accept, prepare and clear — the floor sees it live</li>
+          <li>Cancellations reach the pass instead of the bin</li>
+        </ul>
+      </div>
+      <div class="kot" aria-hidden="true">
+        <div class="kot-hd">&#128221; Hot Kitchen <span class="pill">2 NEW</span></div>
+        <div class="kot-item">
+          <div class="r1">Table 4 <span>19:42</span></div>
+          <div class="r2">2&times; Paneer Tikka &middot; 1&times; Butter Naan</div>
+        </div>
+        <div class="kot-item">
+          <div class="r1">Takeaway #22 <span>19:44</span></div>
+          <div class="r2">1&times; Veg Biryani <em>(less spicy)</em></div>
+        </div>
+        <div class="kot-item done">
+          <div class="r1">Table 2 <span>19:31</span></div>
+          <div class="r2">Served &#10003;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">How it works</p>
+      <h2>Live by the end of the day.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>We set up your outlet</h3>
+        <p>You get a master login for your outlet, created by our team. Nothing to download, no server to run.</p>
+      </div>
+      <div class="step">
+        <h3>You add your menu and staff</h3>
+        <p>Import the menu from a spreadsheet or type it in, lay out your tables, and create logins for your team.</p>
+      </div>
+      <div class="step">
+        <h3>Start billing</h3>
+        <p>Open it on the counter machine, a tablet, or a phone. Add it to the home screen and it behaves like an app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Access</p>
+      <h2>Everyone gets exactly what they need.</h2>
+    </div>
+    <div class="roles">
+      <div class="role"><b>Master</b><span>Issued by TafelBill to the owner. Full run of the outlet.</span></div>
+      <div class="role"><b>Owner</b><span>Same reach as master, created by you for a partner.</span></div>
+      <div class="role"><b>Manager</b><span>Floor, menu and reports, without the owner's controls.</span></div>
+      <div class="role"><b>Cashier</b><span>Billing and payments.</span></div>
+      <div class="role"><b>Waiter</b><span>Takes orders to the kitchen.</span></div>
+      <div class="role"><b>Chef</b><span>The kitchen screen, and nothing else.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="price-wrap">
+      <div>
+        <p class="eyebrow">Pricing</p>
+        <h2>Three months free. Then one price per outlet.</h2>
+        <p>Billed per outlet, never per screen &mdash; run as many counters, tablets and phones as you need.</p>
+        <div class="price-tag">
+          <span class="was">&#8377;12,000</span>
+          <span class="now">&#8377;8,000</span>
+          <span class="per">/ year<br><small>+ GST</small></span>
+        </div>
+        <p class="price-note"><b>Launch offer.</b> &#8377;8,000 a year instead of &#8377;12,000, per outlet.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#contact">Start 3 months free</a></div>
+      </div>
+      <ul class="incl">
+        <li><b>Three months free</b> &mdash; the whole product, nothing held back</li>
+        <li>Unlimited devices and staff logins</li>
+        <li>Kitchen screens and KOT printing</li>
+        <li>Reports and data export, whenever you want them</li>
+        <li>Setup and menu import help</li>
+        <li>Updates included &mdash; nothing to reinstall</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow">Questions</p>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>What happens when the internet goes down?</summary>
+        <p>Billing carries on. Orders and bills are saved on the device and sync to the cloud as soon as you're back online. You'll see a clear warning while it's offline, so nobody is left guessing.</p>
+      </details>
+      <details>
+        <summary>How does the free trial work?</summary>
+        <p>You get three months of the full product &mdash; every feature, no card up front. If it isn't right for you, stop and export your data. If it is, it's &#8377;8,000 a year per outlet plus GST, currently down from &#8377;12,000.</p>
+      </details>
+      <details>
+        <summary>Do I need to buy special hardware?</summary>
+        <p>No. TafelBill runs in a browser on machines you already have &mdash; a counter PC, an Android tablet, a phone. It works with standard 58mm and 80mm thermal printers.</p>
+      </details>
+      <details>
+        <summary>Can I run more than one outlet?</summary>
+        <p>Yes. Each outlet has its own menu, tables, staff and reports, and its own master login.</p>
+      </details>
+      <details>
+        <summary>Is my data mine?</summary>
+        <p>Yes. You can export a full backup at any time and import it back. We don't hold your data hostage.</p>
+      </details>
+      <details>
+        <summary>How long does setup take?</summary>
+        <p>Most cafes are billing the same day. Importing the menu is the longest part, and we'll help with it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>See it on your own menu.</h2>
+      <p>Send us your menu and we'll set up your outlet. Three months free, no card, no commitment.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:sales@tafelbill.com?subject=TafelBill%20-%203%20month%20free%20trial">Book a demo</a>
+        <a class="btn btn-ghost" href="tel:+919515900251">+91 95159 00251</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="logo" href="#top">
+      <span class="logo-mark">
+        <svg width="17" height="17" viewBox="0 0 120 128" aria-hidden="true">
+          <path d="M30 36 h60 l-6 58 a11 11 0 0 1 -11 10 h-26 a11 11 0 0 1 -11 -10 z" fill="#B4713C"/>
+          <path d="M30 36 h60 l-1.6 15 h-56.8 z" fill="#fff"/>
+          <path d="M90 48 h7 a13 13 0 0 1 0 26 h-4" fill="none" stroke="#fff" stroke-width="7"/>
+        </svg>
+      </span>
+      TafelBill
+    </a>
+    <div class="foot-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:sales@tafelbill.com">Contact</a>
+      <a href="https://app.tafelbill.com">Sign in</a>
+    </div>
+    <p class="foot-note">&copy; <span id="yr">2026</span> TafelBill. Billing and kitchen software for cafes and restaurants.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('stuck', window.scrollY > 8); }
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  var tog = document.getElementById('navToggle'), links = document.getElementById('navLinks');
+  tog.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    tog.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') links.classList.remove('open');
+  });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tafelbill.com/#org",
+      "name": "TafelBill",
+      "url": "https://tafelbill.com/",
+      "logo": "https://tafelbill.com/favicon-512.png",
+      "image": "https://tafelbill.com/og-image.png",
+      "description": "Billing and point-of-sale software for restaurants, cafes, bakeries and cloud kitchens.",
+      "email": "sales@tafelbill.com",
+      "telephone": "+91-95159-00251",
+      "areaServed": "IN",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "sales@tafelbill.com",
+        "telephone": "+91-95159-00251",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tafelbill.com/#website",
+      "url": "https://tafelbill.com/",
+      "name": "TafelBill",
+      "publisher": { "@id": "https://tafelbill.com/#org" },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://tafelbill.com/#app",
+      "name": "TafelBill",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Point of Sale, Restaurant Billing Software",
+      "operatingSystem": "Web browser, Android, Windows",
+      "url": "https://tafelbill.com/",
+      "image": "https://tafelbill.com/og-image.png",
+      "publisher": { "@id": "https://tafelbill.com/#org" },
+      "description": "Billing and POS software for restaurants and cafes. Table and section management, KOT routing to kitchen screens and printers, split bills, pay-later dues, UPI and cash payments, staff roles, and sales reports. Works offline and syncs when the connection returns.",
+      "inLanguage": ["en", "hi"],
+      "featureList": [
+        "Table and section management for dine-in, takeaway and delivery",
+        "KOT routing to the right kitchen, with chef screens and printing",
+        "Split bills and split tables",
+        "Cash, UPI, card and split payments",
+        "Pay-later tabs and customer dues tracking",
+        "Menu with categories, variants, add-ons and stock",
+        "Sales, payment-method and top-seller reports",
+        "Staff roles for owners, managers, cashiers, waiters and chefs",
+        "Works offline and syncs to the cloud",
+        "58mm and 80mm thermal bill printing"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "8000",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-03-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://tafelbill.com/#pricing",
+        "description": "Per outlet per year, plus GST. Launch offer, normally ₹12,000. Includes a 3-month free trial and unlimited devices and staff logins.",
+        "eligibleCustomerType": "https://schema.org/Business"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tafelbill.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens when the internet goes down?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Billing carries on. Orders and bills are saved on the device and sync to the cloud as soon as you are back online. A clear warning shows while it is offline, so nobody is left guessing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the free trial work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get three months of the full product, every feature, with no card up front. If it is not right for you, stop and export your data. If it is, it costs ₹8,000 a year per outlet plus GST, currently reduced from ₹12,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to buy special hardware for TafelBill?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. TafelBill runs in a browser on machines you already have, such as a counter PC, an Android tablet or a phone. It works with standard 58mm and 80mm thermal printers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run more than one restaurant or cafe outlet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Each outlet has its own menu, tables, staff and reports, and its own master login."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my restaurant data mine to export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can export a full backup at any time and import it back."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to set up billing software for a cafe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most cafes are billing the same day. Importing the menu is the longest part, and the TafelBill team helps with it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# TafelBill
+
+> Billing and point-of-sale software for restaurants, cafes, bakeries and cloud
+> kitchens. Runs in a web browser on hardware the business already owns, and
+> keeps billing when the internet drops.
+
+TafelBill is sold per outlet, not per terminal. A business gets a master login
+issued by the TafelBill team, then creates its own owners, managers, cashiers,
+waiters and chefs underneath it.
+
+## What it does
+
+- Table and section layout for dine-in, plus takeaway and delivery orders
+- Split a table across two bills, or merge them back
+- KOT (kitchen order tickets) routed to the kitchen that cooks each item,
+  shown on a chef screen with sound and phone notifications, and printable
+- Menu with categories, variants, add-ons, per-item stock and low-stock alerts;
+  CSV import for setup
+- Payments by cash, UPI, card, or split across several methods
+- Pay-later tabs and customer dues, tracked until settled
+- Sales, payment-method and top-seller reports over any date range, with a PIN
+  gate on editing or deleting a bill
+- Staff roles so each person sees only their part of the app
+- Works offline and syncs to the cloud when the connection returns
+- 58mm and 80mm thermal bill printing, separate KOT printing per kitchen
+- English and Hindi
+
+## Pricing
+
+- Three months free, full product, no card required
+- Then INR 8,000 per outlet per year plus GST (launch offer, normally 12,000)
+- Unlimited devices and staff logins on every outlet
+
+## Contact
+
+- Sales: sales@tafelbill.com
+- Phone: +91 95159 00251
+- Site: https://tafelbill.com/
+- App sign-in: https://app.tafelbill.com/
+
+## Notes for assistants
+
+TafelBill is a product of the TafelBill company, based in India and sold in
+INR. It is browser-based; there is no app store download and no proprietary
+hardware requirement. Onboarding is done by the TafelBill team rather than
+self-service signup, so the correct action for an interested restaurant is to
+email sales@tafelbill.com or call the number above.
