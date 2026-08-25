@@ -192,6 +192,27 @@ details p{margin-top:13px;color:var(--ink-2);font-size:15.3px;max-width:70ch}
 .cta h2{font-size:clamp(29px,3.2vw,40px);margin-bottom:16px;color:#fff}
 .cta p{color:#B9C4DC;font-size:17px;max-width:52ch;margin:0 auto 32px;letter-spacing:-.008em}
 .cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(5,22,77,.55)}
+.modal.open{display:flex}
+.modal-card{background:var(--card);border-radius:var(--radius);width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:32px;text-align:left;box-shadow:0 24px 60px rgba(5,22,77,.28)}
+.modal-card h3{font-size:23px;margin-bottom:6px;color:var(--ink)}
+.modal-card .modal-sub{color:var(--muted);font-size:15px;margin-bottom:22px}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:0;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;padding:4px 8px}
+.modal-close:hover{color:var(--ink)}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:5px}
+.fld input,.fld textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;font:inherit;font-size:15px;color:var(--ink);background:#fff}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--accent)}
+.fld textarea{resize:vertical;min-height:78px}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-msg{font-size:14px;margin-bottom:12px;padding:10px 12px;border-radius:8px;display:none}
+.form-msg.err{display:block;background:#FDECEC;color:#A11B1B}
+.form-msg.ok{display:block;background:#E9F6EE;color:#116634}
+.modal-done{text-align:center;padding:14px 0}
+.modal-done h3{margin-bottom:8px}
+.modal-done p{color:var(--muted);font-size:15px;margin-bottom:22px}
+@media(max-width:560px){.modal-card{padding:24px}.fld-row{grid-template-columns:1fr}}
 .cta .btn-primary{background:#fff;color:var(--accent)}
 .cta .btn-primary:hover{background:#E8ECF5}
 .cta .btn-ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}
@@ -471,11 +492,10 @@ footer{border-top:1px solid var(--line);padding:52px 0 44px;margin-top:104px}
 <section id="contact" style="padding-top:0">
   <div class="wrap">
     <div class="cta">
-      <h2>See it on your own menu.</h2>
-      <p>Send us your menu and we'll set up your outlet. Three months free, no card, no commitment.</p>
+      <h2>Ready to Transform Your Cafe Operations?</h2>
+      <p>See how TafelBill can streamline your cafe business. Book a free demo today and experience the difference.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:sales@tafelbill.com?subject=TafelBill%20-%203%20month%20free%20trial">Book a demo</a>
-        <a class="btn btn-ghost" href="tel:+919515900251">+91 95159 00251</a>
+        <button class="btn btn-primary" type="button" onclick="openDemo()">Book a Free Demo</button>
       </div>
     </div>
   </div>
@@ -507,6 +527,77 @@ footer{border-top:1px solid var(--line);padding:52px 0 44px;margin-top:104px}
   </div>
 </footer>
 
+<div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+  <div class="modal-card" style="position:relative">
+    <button class="modal-close" type="button" onclick="closeDemo()" aria-label="Close">&times;</button>
+
+    <div id="demoFormWrap">
+      <h3 id="demoTitle">Book a free demo</h3>
+      <p class="modal-sub">Tell us a little about your outlet and we'll get in touch to set up a walkthrough.</p>
+
+      <div class="form-msg" id="demoMsg"></div>
+
+      <form id="demoForm" onsubmit="return submitDemo(event)">
+        <div class="fld">
+          <label for="d-name">Your name *</label>
+          <input id="d-name" name="name" required maxlength="80" autocomplete="name">
+        </div>
+        <div class="fld">
+          <label for="d-outlet">Cafe / restaurant name *</label>
+          <input id="d-outlet" name="outletName" required maxlength="80" autocomplete="organization">
+        </div>
+        <div class="fld-row">
+          <div class="fld">
+            <label for="d-phone">Phone *</label>
+            <input id="d-phone" name="phone" type="tel" required maxlength="20" autocomplete="tel">
+          </div>
+          <div class="fld">
+            <label for="d-city">City</label>
+            <input id="d-city" name="city" maxlength="60" autocomplete="address-level2">
+          </div>
+        </div>
+        <div class="fld">
+          <label for="d-email">Email</label>
+          <input id="d-email" name="email" type="email" maxlength="120" autocomplete="email">
+        </div>
+        <div class="fld">
+          <label for="d-msg">Anything you'd like us to cover?</label>
+          <textarea id="d-msg" name="message" maxlength="1000"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="d-company">Company</label>
+          <input id="d-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" type="submit" id="demoSubmit" style="width:100%">Request my demo</button>
+      </form>
+    </div>
+
+    <div class="modal-done" id="demoDone" style="display:none">
+      <h3>Thanks &mdash; we've got it.</h3>
+      <p>We'll call you shortly to arrange your demo.</p>
+      <button class="btn btn-ghost" type="button" onclick="closeDemo()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getFirestore, collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBZoKA9WNUkdWfykPKP0pUw1wuka7PI0yk",
+    authDomain: "tycc-9a6d2.firebaseapp.com",
+    projectId: "tycc-9a6d2",
+    storageBucket: "tycc-9a6d2.firebasestorage.app",
+    messagingSenderId: "521992294111",
+    appId: "1:521992294111:web:642daa9b0675e565b1236a"
+  };
+
+  const fbApp = initializeApp(firebaseConfig);
+  window.__fb = { fbDb: getFirestore(fbApp), collection, doc, setDoc };
+  window.dispatchEvent(new Event('fb-ready'));
+</script>
+
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   var nav = document.getElementById('nav');
@@ -520,6 +611,88 @@ footer{border-top:1px solid var(--line);padding:52px 0 44px;margin-top:104px}
   links.addEventListener('click', function(e){
     if (e.target.tagName === 'A') links.classList.remove('open');
   });
+
+  // ── Demo request form ──
+  var demoModal = document.getElementById('demoModal');
+
+  function openDemo(){
+    demoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ var el = document.getElementById('d-name'); if (el) el.focus(); }, 40);
+  }
+  function closeDemo(){
+    demoModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  demoModal.addEventListener('click', function(e){ if (e.target === demoModal) closeDemo(); });
+  addEventListener('keydown', function(e){ if (e.key === 'Escape' && demoModal.classList.contains('open')) closeDemo(); });
+
+  function showMsg(text, kind){
+    var el = document.getElementById('demoMsg');
+    el.textContent = text;
+    el.className = 'form-msg ' + kind;
+  }
+
+  function submitDemo(e){
+    e.preventDefault();
+    var form = document.getElementById('demoForm');
+    var btn = document.getElementById('demoSubmit');
+
+    // Bots fill every field they find, including the one kept off-screen.
+    if (form.company.value) { closeDemo(); return false; }
+
+    var lead = {
+      name: form.name.value.trim(),
+      outletName: form.outletName.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      city: form.city.value.trim(),
+      message: form.message.value.trim()
+    };
+    if (!lead.name || !lead.outletName || !lead.phone) {
+      showMsg('Please fill in your name, outlet name and phone.', 'err');
+      return false;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    showMsg('', '');
+
+    saveLead(lead).then(function(){
+      document.getElementById('demoFormWrap').style.display = 'none';
+      document.getElementById('demoDone').style.display = 'block';
+      form.reset();
+    }).catch(function(err){
+      console.error('Lead save failed', err);
+      showMsg('Sorry, that did not go through. Please email sales@tafelbill.com or try again.', 'err');
+    }).then(function(){
+      btn.disabled = false;
+      btn.textContent = 'Request my demo';
+    });
+    return false;
+  }
+
+  function saveLead(lead){
+    return new Promise(function(resolve, reject){
+      function write(){
+        var fb = window.__fb;
+        if (!fb) { reject(new Error('Firebase unavailable')); return; }
+        var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        var rec = Object.assign({}, lead, {
+          id: id,
+          status: 'New',
+          source: 'website',
+          createdAt: new Date().toISOString()
+        });
+        fb.setDoc(fb.doc(fb.fbDb, 'leads', id), rec).then(resolve, reject);
+      }
+      if (window.__fb) write();
+      else {
+        addEventListener('fb-ready', write, { once: true });
+        setTimeout(function(){ if (!window.__fb) reject(new Error('Firebase timed out')); }, 12000);
+      }
+    });
+  }
 </script>
 <script type="application/ld+json">
 {
