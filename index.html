@@ -28,7 +28,7 @@
 
 <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="favicon-192.png">
-<meta name="theme-color" content="#05164D">
+<meta name="theme-color" content="#1F3557">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
@@ -36,8 +36,9 @@
 :root{
   --ink:#0B1B3F; --ink-2:#4C5566; --muted:#6E7686;
   --cream:#FFFFFF; --card:#FFFFFF; --line:#E4E7EC; --line-2:#EEF0F4;
-  --accent:#05164D; --accent-dark:#0A2263; --accent-soft:#EEF1F7;
-  --slate:#05164D;
+  --accent:#1F3557; --accent-dark:#152741; --accent-soft:#EEF1F7;
+  --slate:#1F3557;
+  --mark-grey:#84888D;
   --soft:#F7F8FA; --bar:#CBCBD3;
   --radius:10px;
   --wrap:1140px;
@@ -75,7 +76,7 @@ header.nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.86);
 header.nav.stuck{border-bottom-color:var(--line)}
 .nav-in{display:flex; align-items:center; gap:32px; height:66px}
 .logo{display:flex; align-items:center; gap:9px; font-weight:600; font-size:17.5px; text-decoration:none; letter-spacing:-.028em}
-.logo-mark{width:26px;height:26px;border-radius:6px;background:var(--accent);display:grid;place-items:center;flex-shrink:0}
+.logo-mark{width:26px;height:26px;display:grid;place-items:center;flex-shrink:0}
 .nav-links{display:flex; gap:28px; margin-left:auto; font-size:14.5px; font-weight:450}
 .nav-links a{text-decoration:none; color:var(--ink-2)}
 .nav-links a:hover{color:var(--ink)}
@@ -228,13 +229,14 @@ footer{border-top:1px solid var(--line);padding:52px 0 44px;margin-top:104px}
   <div class="wrap nav-in">
     <a class="logo" href="#top">
       <span class="logo-mark">
-        <svg width="17" height="17" viewBox="0 0 120 128" aria-hidden="true">
-          <path d="M30 36 h60 l-6 58 a11 11 0 0 1 -11 10 h-26 a11 11 0 0 1 -11 -10 z" fill="#FFFFFF"/>
-          <path d="M30 36 h60 l-1.6 15 h-56.8 z" fill="#9FB0D6"/>
-          <path d="M90 48 h7 a13 13 0 0 1 0 26 h-4" fill="none" stroke="#fff" stroke-width="7"/>
+        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M10 27.1A17.1 17.1 0 0 1 27.1 10h20.15v37.25H10Z" fill="#1F3557"/>
+          <path d="M52.75 10H72.9A17.1 17.1 0 0 1 90 27.1v3.05A17.1 17.1 0 0 1 72.9 47.25H52.75Z" fill="#84888D"/>
+          <path d="M10 52.75h37.25V90H27.1A17.1 17.1 0 0 1 10 72.9Z" fill="#84888D"/>
+          <circle cx="71.375" cy="71.375" r="18.625" fill="#1F3557"/>
         </svg>
       </span>
-      TafelBill
+      tafelbill
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="nav-links" id="navLinks">
@@ -491,13 +493,14 @@ footer{border-top:1px solid var(--line);padding:52px 0 44px;margin-top:104px}
   <div class="wrap foot">
     <a class="logo" href="#top">
       <span class="logo-mark">
-        <svg width="17" height="17" viewBox="0 0 120 128" aria-hidden="true">
-          <path d="M30 36 h60 l-6 58 a11 11 0 0 1 -11 10 h-26 a11 11 0 0 1 -11 -10 z" fill="#FFFFFF"/>
-          <path d="M30 36 h60 l-1.6 15 h-56.8 z" fill="#9FB0D6"/>
-          <path d="M90 48 h7 a13 13 0 0 1 0 26 h-4" fill="none" stroke="#fff" stroke-width="7"/>
+        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M10 27.1A17.1 17.1 0 0 1 27.1 10h20.15v37.25H10Z" fill="#1F3557"/>
+          <path d="M52.75 10H72.9A17.1 17.1 0 0 1 90 27.1v3.05A17.1 17.1 0 0 1 72.9 47.25H52.75Z" fill="#84888D"/>
+          <path d="M10 52.75h37.25V90H27.1A17.1 17.1 0 0 1 10 72.9Z" fill="#84888D"/>
+          <circle cx="71.375" cy="71.375" r="18.625" fill="#1F3557"/>
         </svg>
       </span>
-      TafelBill
+      tafelbill
     </a>
     <div class="foot-links">
       <a href="#features">Features</a>
